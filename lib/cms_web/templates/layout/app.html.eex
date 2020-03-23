@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Extensible CMS built with Elixir inspired from Wordpress">
-    <meta name="author" content="Raman Sah">
+    <meta name="description" content="Fake news">
+    <meta name="author" content="Martijn Meeldijk & Tim Vanherwegen">
 
-    <title>Elixir CMS</title>
+    <title>The Today Express</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/style.css") %>">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
   </head>
 
