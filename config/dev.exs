@@ -51,8 +51,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :cms, Cms.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "rails",
-  password: "rails",
+  username: "martijn",
+  password: "vergeten",
   database: "cms_dev",
   hostname: "localhost",
   pool_size: 10

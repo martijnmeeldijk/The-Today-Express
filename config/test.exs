@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :cms, Cms.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "rails",
-  password: "rails",
+  username: "root",
+  password: "vergeten",
   database: "cms_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
