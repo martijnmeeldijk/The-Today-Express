@@ -4,6 +4,9 @@ Your daily source of
 
 <img src="https://i.dlpng.com/static/png/1281015-naval-station-newport-ceases-publication-of-base-newspaper-the-newport-navalog-u2013-whatu0027supnewp-newspaper-newspaper-png-1600_1104_preview.png" alt="drawing" width="200"/>
 
+## Preview
+<img src="screenshot.png" alt="drawing" width="800"/>
+
 ## Features
 
 * Post any bullshit article you want
