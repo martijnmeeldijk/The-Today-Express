@@ -1,57 +1,72 @@
-defmodule Votex.MixProject do
+defmodule Cms.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :votex,
-      version: "0.3.0",
-      elixir: "~> 1.7",
-      start_permanent: Mix.env() == :prod,
-      deps: deps(),
-      description: description(),
-      package: package(),
-      name: "Votex",
-      source_url: "https://github.com/ramansah/votex",
-      docs: docs()
+      app: :cms,
+      version: "0.0.1",
+      elixir: "~> 1.4",
+      elixirc_paths: elixirc_paths(Mix.env),
+      compilers: [:phoenix, :gettext] ++ Mix.compilers,
+      start_permanent: Mix.env == :prod,
+      aliases: aliases(),
+      deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+  # Configuration for the OTP application.
+  #
+  # Type `mix help compile.app` for more information.
   def application do
     [
-      extra_applications: [:logger]
+      mod: {Cms.Application, []},
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
+  # Specifies which paths to compile per environment.
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_),     do: ["lib"]
+
+  # Specifies your project dependencies.
+  #
+  # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:ex_doc, "~> 0.19.1", only: :dev},
-      {:ecto, "~> 2.1"},
-      {:inch_ex, only: [:docs, :dev]}
+      {:phoenix, "~> 1.3.4"},
+      {:phoenix_pubsub, "~> 1.0"},
+      {:phoenix_ecto, "~> 3.2"},
+      {:postgrex, ">= 0.0.0"},
+      {:phoenix_html, "~> 2.10"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:gettext, "~> 0.11"},
+      {:cowboy, "~> 1.0"},
+
+      # User authentication
+      {:guardian, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
+
+      # Blog engine deps
+      {:slugger, "~> 0.3"},
+      {:earmark, "~> 1.2.6" },
+      {:timex, "~> 3.3.0"},
+      {:arc, "~> 0.10.0"},
+      {:arc_ecto, "~> 0.10.0"}
     ]
   end
 
-  defp package() do
+  # Aliases are shortcuts or tasks specific to the current project.
+  # For example, to create, migrate and run the seeds file at once:
+  #
+  #     $ mix ecto.setup
+  #
+  # See the documentation for `Mix` for more info on aliases.
+  defp aliases do
     [
-      licenses: ["MIT"],
-      links: %{
-        "GitHub" => "https://github.com/ramansah/votex",
-        "Readme" => "https://github.com/ramansah/votex/blob/master/README.md"
-      }
-    ]
-  end
-
-  defp description() do
-    "Implements vote / like / follow functionality for Ecto models in Elixir.
-    Inspired from Acts as Votable"
-  end
-
-  defp docs() do
-    [
-      main: "readme",
-      source_url: "https://github.com/ramansah/votex",
-      extras: ["README.md"]
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.create --quiet", "ecto.migrate", "test"]
     ]
   end
 end
